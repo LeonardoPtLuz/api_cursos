@@ -1,3 +1,5 @@
+-Em andamento-
+
 API RESTful para cadastro de curso e avaliaçao do mesmo.
 
 Cadastro de curso:
