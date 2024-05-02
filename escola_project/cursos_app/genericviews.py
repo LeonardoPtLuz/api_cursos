@@ -54,6 +54,15 @@ class CursoViewSet(viewsets.ModelViewSet):
     
 
 
+"""VIEWSET PADRÃO
 class AvaliacaoViewSet(viewsets.ModelViewSet):
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
+"""
+
+#VIEWSET MODIFICADA
+class AvaliacaoViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+    queryset = Avaliacao.objects.all()
+    serializer_class = AvaliacaoSerializer
+
+    
