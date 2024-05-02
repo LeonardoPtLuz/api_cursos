@@ -1,5 +1,12 @@
 from django.urls import path
-from .genericviews import CursoAPIView, CursosAPIView, AvaliacaoAPIView, AvaliacoesAPIView
+from .genericviews import CursoAPIView, CursosAPIView, AvaliacaoAPIView, AvaliacoesAPIView, AvaliacaoViewSet, CursoViewSet
+from rest_framework.routers import SimpleRouter
+
+
+router = SimpleRouter()
+router.register('cursos', CursoViewSet)
+router.register('avaliacoes', AvaliacaoViewSet)
+
 
 urlpatterns = [
     path('cursos/', CursosAPIView.as_view(), name='cursos'),
