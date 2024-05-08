@@ -6,6 +6,7 @@ from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import permissions
+from .permissions import TheSuperUser
 
 
 #================================================{V1}==============================================================================================
@@ -48,7 +49,8 @@ class CursoViewSet(viewsets.ModelViewSet):
     serializer_class = CursoSerializer
 
     #PERMISSION
-    permission_classes = {permissions.DjangoModelPermissions}
+    #permission_classes = {permissions.DjangoModelPermissions}
+    permission_classes = {TheSuperUser, permissions.DjangoModelPermissions}
 
     @action(detail=True, methods=['get'])
     def avaliacoes(self, request, pk=None):
