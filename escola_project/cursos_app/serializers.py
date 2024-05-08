@@ -23,6 +23,12 @@ class AvaliacaoSerializer(serializers.ModelSerializer):
 
         #fields = '__all__'
 
+    def validate_avaliacao(self, valor):
+        if valor in range(1, 11):
+            return valor
+        raise serializers.ValidationError('Nota deve ser apenas entre 1 e 10')
+
+
 class CursoSerializer(serializers.ModelSerializer):
     
     #NESTED RELATIONSHIP
