@@ -5,6 +5,7 @@ from rest_framework.generics import get_object_or_404
 from rest_framework import mixins, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework import permissions
 
 
 #================================================{V1}==============================================================================================
@@ -46,6 +47,9 @@ class CursoViewSet(viewsets.ModelViewSet):
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
 
+    #PERMISSION
+    permission_classes = {permissions.DjangoModelPermissions}
+
     @action(detail=True, methods=['get'])
     def avaliacoes(self, request, pk=None):
         # curso = self.get_object()
@@ -73,7 +77,7 @@ class AvaliacaoViewSet(viewsets.ModelViewSet):
 """
 
 #VIEWSET MODIFICADA
-class AvaliacaoViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+class AvaliacaoViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
     queryset = Avaliacao.objects.all()
     serializer_class = AvaliacaoSerializer
 
