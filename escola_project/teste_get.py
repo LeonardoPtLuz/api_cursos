@@ -6,14 +6,20 @@ headers = {'Authorization': 'Token 91aa3d2c81dd8ed1cc94a1855e70f65434576271'}
 url_cursos = 'http://localhost:8000/api/v2/cursos/'
 url_avaliacoes = 'http://localhost:8000/api/v2/avaliacoes/'
 
-results = requests.get(url=url_cursos, headers=headers)
+#CURSOS:
+results_cursos = requests.get(url=url_cursos, headers=headers)
 
-print(f"Json_Results: {organize}")
-print(results.json())
+print(f"Cursos_Results: {organize}")
+print(results_cursos.json())
 
 #Teste endpoint:
-assert results.status_code == 200
+assert results_cursos.status_code == 200
 
-# assert results.json()['count'] == 2
+#AVALIAÇÕES:
+results_avaliacoes = requests.get(url=url_avaliacoes, headers=headers)
 
-# assert results.json()['results'][0]['titulo'] == ''
+print(f"Avaliações_Results: {organize}")
+print(results_avaliacoes.json())
+
+#Teste endpoint:
+assert results_avaliacoes.status_code == 200
