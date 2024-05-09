@@ -16,3 +16,5 @@ assert results_post.status_code == 201
 
 #Teste titulo POST:
 assert results_post.json()['titulo'] == add_curso['titulo']
+
+print(results_post.json())
